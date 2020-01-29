@@ -6,13 +6,21 @@
 </head>
 <body>
 	<script>
+		
+		let scorep=0;
+		let scorec=0;
+		
+		function game(){
+
 		let x= Math.floor(Math.random()*3);
 		let ip=prompt("Enter Your Choice");
 		let user=0;
 		let com;
 		let res;
+		
+		let resf;
 
-
+		function input(ip){
 		if(ip=="rock" || ip== "Rock")
 			user=0;
 		else if(ip=="paper" || ip== "Paper")
@@ -21,8 +29,8 @@
 			user=2;
 		else
 			alert("Please choose between Rock Paper and Scissor");
+		}
 
-		
 		function computerplay(x){
 			if(x==0)
 				com='Computer Chose Rock';
@@ -35,22 +43,27 @@
 		function outcome(user,x){
 			if(user==0 && x==2)
 				res='Congrats You WIN!!!';
+				scorep++;
 			if(user==0 && x==1)
 				res='Sorry You LOSE!!!';
+				scorec=0;
 			if(user==1 && x==0)
 				res='Congrats You WIN!!!';
+				scorep=0;
 			if(user==1 && x==2)
 				res='Sorry You LOSE!!!';
+				scorec=0;
 			if(user==2 && x==0)
 				res='Sorry You LOSE!!!';
+				scorec=0;
 			if(user==2 && x==1)
 				res='Congrats You WIN!!!';
+				scorep=0;
 			if(user==x)
 				res='Hmm.. It"s a draw';
 		}
-	
 		
-		
+		input(ip);
 		computerplay(x);
 		outcome(user,x);
 		document.write("You chose "+ip);
@@ -58,6 +71,28 @@
 		document.write(com);
 		document.write("<br>");
 		document.write(res);
+		document.write("<br>");
+	}
+	
+	game();
+	document.write("<br>");
+	game();
+	document.write("<br>");
+	game();
+	document.write("<br>");
+	game();
+	document.write("<br>");
+	game();
+	document.write("<br>");
+	score(scorec,scorep);
+
+	function score(scorec,scorep){
+		if(scorec<scorep)
+			document.write("You Won");
+		if(scorec>scorep)
+			document.write("You Lose");
+	}
+
 	</script>
 </body>
 </html>
